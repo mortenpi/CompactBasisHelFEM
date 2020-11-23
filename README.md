@@ -4,7 +4,7 @@
 [![Coverage](https://codecov.io/gh/mortenpi/CompactBasisHelFEM.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/mortenpi/CompactBasisHelFEM.jl)
 
 Exposes the [HelFEM][HelFEM]-based finite element method basis in the [CompactBases.jl][CompactBases.jl] framework.
-[HelFEM.jl][HelFEM.jl] is used to wrap the HelFEM library,.
+[HelFEM.jl][HelFEM.jl] is used to wrap the HelFEM library.
 
 [HelFEM]: https://github.com/susilehtola/HelFEM
 [HelFEM.jl]: https://github.com/mortenpi/HelFEM.jl
