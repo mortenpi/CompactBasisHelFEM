@@ -1,5 +1,9 @@
 module CompactBasisHelFEM
+using HelFEM: RadialBasis
+using CompactBases: Basis
 
-# Write your package code here.
+struct HelFEMBasis{T} <: Basis{T}
+    b :: RadialBasis
+end
 
 end
