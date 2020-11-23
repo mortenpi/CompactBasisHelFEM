@@ -1,0 +1,18 @@
+name = "CompactBasisHelFEM"
+uuid = "b5aa811e-58a7-4961-b43e-31e7a6de9b1f"
+authors = ["Morten Piibeleht <morten.piibeleht@gmail.com> and contributors"]
+version = "0.1.0"
+
+[deps]
+CompactBases = "2c0377a8-7469-4ebd-be0f-82e501f20078"
+HelFEM = "c0bd3504-f9fd-49c8-81ec-6baa9ade81f3"
+
+[compat]
+julia = "1"
+CompactBases = "0.1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
