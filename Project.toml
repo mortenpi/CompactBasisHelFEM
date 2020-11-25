@@ -5,11 +5,13 @@ version = "0.1.0"
 
 [deps]
 CompactBases = "2c0377a8-7469-4ebd-be0f-82e501f20078"
+ContinuumArrays = "7ae1f121-cc2c-504b-ac30-9b923412ae5c"
 HelFEM = "c0bd3504-f9fd-49c8-81ec-6baa9ade81f3"
 
 [compat]
-julia = "1"
 CompactBases = "0.1"
+ContinuumArrays = "0.2"
+julia = "1"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
