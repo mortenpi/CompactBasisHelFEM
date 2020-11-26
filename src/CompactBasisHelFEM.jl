@@ -26,8 +26,7 @@ function Base.getindex(b::HelFEMBasis, r::Vector, i)
     b.b(r)[:,i]
 end
 
-Base.getindex(b::HelFEMBasis, r::AbstractVector, i) =
-    b[collect(r), i]
+Base.getindex(b::HelFEMBasis, r::AbstractVector, i) = b[collect(r), i]
 
 # Overlap matrix
 @materialize function *(Ac::QuasiAdjoint{<:Any,<:HelFEMBasis}, B::HelFEMBasis)
