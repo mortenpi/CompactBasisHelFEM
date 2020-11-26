@@ -16,6 +16,18 @@ function Base.axes(b::HelFEMBasis)
     (CompactBases.Inclusion(rmin..rmax), Base.OneTo(length(b.b)))
 end
 
+function Base.getindex(b::HelFEMBasis, r::Number, i)
+    r ∈ axes(b,1) && i ∈ axes(b,2) || throw(BoundsError(b, [r,i]))
+    b.b([r])[i]
+end
+
+function Base.getindex(b::HelFEMBasis, r::Vector, i)
+    all(∈(axes(b,1)), r) && (i isa Colon || all(∈(axes(b,2)),i)) || throw(BoundsError(b, [r,i]))
+    b.b(r)[:,i]
+end
+
+Base.getindex(b::HelFEMBasis, r::AbstractVector, i) = b[collect(r), i]
+
 # Overlap matrix
 @materialize function *(Ac::QuasiAdjoint{<:Any,<:HelFEMBasis}, B::HelFEMBasis)
     SimplifyStyle
