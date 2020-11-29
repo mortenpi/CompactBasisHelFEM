@@ -1,7 +1,7 @@
 module CompactBasisHelFEM
 using ContinuumArrays: SimplifyStyle
 using CompactBases: CompactBases, Basis, @materialize, LazyArrays, ContinuumArrays,
-    QuasiAdjoint, QuasiDiagonal, Derivative
+    QuasiAdjoint, QuasiDiagonal, Derivative, BroadcastQuasiArray
 using HelFEM: HelFEM
 
 # This comes from EllipsisNotation via CompactBases, but can't be imported with using
@@ -87,6 +87,14 @@ end
 function Sinvh(A::HelFEMBasis)
     _, Sinvh = HelFEM.overlap(A.b, invh=true)
     return Sinvh
+end
+
+# Interpolating functions over HelFEMBasis
+function Base.:(\ )(B::HelFEMBasis, f::BroadcastQuasiArray)
+    @assert B.b.primbas == 4 # only works for LIPs at the moment
+    axes(f,1) == axes(B,1) || throw(DimensionMismatch("Function on $(axes(f,1).domain) cannot be interpolated over basis on $(axes(B,1).domain)"))
+    cs = HelFEM.controlpoints(B.b)
+    collect(cs[2:end-1] .* f[cs[2:end-1]])
 end
 
 end
